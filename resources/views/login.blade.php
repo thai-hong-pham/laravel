@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('layouts.head')
+    @include('layout.head')
 </head>
 
 <body>
@@ -55,7 +55,7 @@
     </div>
     <!-- Sign In End -->
 </div>
-    @include('layouts.footer')
+    @include('layout.footer')
 </body>
 
 </html>

@@ -15,11 +15,6 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function home()
-    {
-        return view('main');
-    }
-
     public function saveLogin(Request $request)
     {
         $credentials = $request->validate([
@@ -34,6 +29,6 @@ class LoginController extends Controller
         }
         Session::flash('error','Email hoặc password không chính xác');
             return redirect()->back();
-        
+
     }
 }

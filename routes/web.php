@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-route::get('admin/login',[LoginController::class,'loginForm'])->name('login');
-route::post('admin/login',[LoginController::class,'saveLogin']);
-route::get('admin/main',[MainController::class,'index'])->name('admin');
+
+
+    Route::prefix('admin')->group(function(){
+        #LOGIN
+        Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+        Route::post('login', [LoginController::class, 'saveLogin']);
+
+        Route::middleware(['auth'])->group(function () {
+            Route::get('main',[MainController::class,'index'])->name('admin');
+
+            #MENU
+            Route::prefix(('menus'))->group(function(){
+                Route::get('add',[MenuController::class,'create']);
+            });
+    });
+});
