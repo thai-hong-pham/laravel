@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function loginForm()
     {
-        return view('login');
+        return view('admin.login');
     }
 
     public function saveLogin(Request $request)

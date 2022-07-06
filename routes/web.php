@@ -20,17 +20,25 @@ use Illuminate\Support\Facades\Route;
 
 
 
-    Route::prefix('admin')->group(function(){
-        #LOGIN
-        Route::get('login', [LoginController::class, 'loginForm'])->name('login');
-        Route::post('login', [LoginController::class, 'saveLogin']);
+Route::prefix('admin')->group(function () {
+    #LOGIN
+    Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'saveLogin']);
 
-        Route::middleware(['auth'])->group(function () {
-            Route::get('main',[MainController::class,'index'])->name('admin');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('main', [MainController::class, 'index'])->name('admin');
 
-            #MENU
-            Route::prefix(('menus'))->group(function(){
-                Route::get('add',[MenuController::class,'create']);
-            });
+        #MENU
+        Route::prefix(('menus'))->group(function () {
+            Route::get('list', [MenuController::class, 'index'])->name('menu');
+
+            Route::get('add', [MenuController::class, 'create'])->name('menu.add');
+            Route::post('add', [MenuController::class, 'saveCreate']);
+
+            Route::get('/edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
+            Route::post('/edit/{id}', [MenuController::class, 'saveEdit']);
+
+            Route::get('/remove/{id}',[MenuController::class,'deleteMenu'])->name('menu.delete');
+        });
     });
 });

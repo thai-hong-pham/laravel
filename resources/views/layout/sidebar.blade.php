@@ -17,8 +17,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-list me-4"></i>Danh mục sản phẩm</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="menus/add" class="dropdown-item">Thêm danh mục</a>
-                    <a href="menus/list" class="dropdown-item">Danh sách danh mục</a>
+                    <a href="{{ route('menu.add') }}" class="dropdown-item">Thêm danh mục</a>
+                    <a href="{{ route('menu') }}" class="dropdown-item">Danh sách danh mục</a>
 
                 </div>
             </div>

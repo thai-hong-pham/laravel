@@ -55,7 +55,7 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h3>{{ $title }}</h3>
+                            <h3></h3>
                             @yield('content')
                         </div>
                     </div>

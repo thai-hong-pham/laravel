@@ -10,19 +10,19 @@
                 @csrf
                 <div class="mb-3">
                     <label for="menu" class="form-label">Tên danh mục</label>
-                    <input type="text" name="name" class="form-control" id="menu" placeholder="Nhập tên danh mục">
+                    <input type="text" value="{{ $menu->name }}" name="name" class="form-control" id="menu" placeholder="Nhập tên danh mục">
                 </div>
                 
                 <div class="mb-3">
                     <label for="menu" class="form-label">Mô tả ngắn</label>
-                    <input type="text" name="description" class="form-control" id="description" placeholder="Nhập mô tả ngắn">
+                    <input type="text" value="{{ $menu->description }}" name="description" class="form-control" id="description" placeholder="Nhập mô tả ngắn">
                 </div>
                 <div class="mb-3">
                     <label for="menu" class="form-label">Mô tả chi tiết</label>
-                    <textarea type="text" name="content" class="form-control" id="content" placeholder="Nhập nội dung"></textarea>
+                    <textarea type="text" value="{{ $menu->content }}" name="content" class="form-control" id="content" placeholder="Nhập nội dung"></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+                <button type="submit" class="btn btn-primary">Sửa danh mục</button>
             </form>
         </div>
     </div>
