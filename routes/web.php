@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\UserController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,28 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+route::get('/home', function () {
+    return view('admin.dashboard');
+});
 
 
+route::prefix('admin')->group(function () {
 
-Route::prefix('admin')->group(function () {
-    #LOGIN
-    Route::get('login', [LoginController::class, 'loginForm'])->name('login');
-    Route::post('login', [LoginController::class, 'saveLogin']);
+    route::prefix('categories')->group(function () {
+        route::get('/', [CategoryController::class, 'index'])->name('index.category');
 
-    Route::middleware(['auth'])->group(function () {
-        Route::get('main', [MainController::class, 'index'])->name('admin');
+        // THÊM DANH MỤC
+        route::get('/add', [CategoryController::class, 'create'])->name('create.category');
+        route::post('/store', [CategoryController::class, 'store'])->name('store.category');
 
-        #MENU
-        Route::prefix(('menus'))->group(function () {
-            Route::get('list', [MenuController::class, 'index'])->name('menu');
+        // CẬP NHẬT DANH MỤC
+        route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit.category');
+        route::post('/update/{id}',[CategoryController::class,'update'])->name('update.category');
 
-            Route::get('add', [MenuController::class, 'create'])->name('menu.add');
-            Route::post('add', [MenuController::class, 'saveCreate']);
-
-            Route::get('/edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
-            Route::post('/edit/{id}', [MenuController::class, 'saveEdit']);
-
-            Route::get('/remove/{id}',[MenuController::class,'deleteMenu'])->name('menu.delete');
-        });
+        // XÓA DANH MỤC
+        route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('delete.category');
     });
 });
