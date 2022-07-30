@@ -14,13 +14,11 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-list me-4"></i>Danh mục sản phẩm</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="{{ route('create.category') }}" class="dropdown-item">Thêm danh mục</a>
-                    <a href="{{ route('index.category') }}" class="dropdown-item">Danh sách danh mục</a>
-
-                </div>
+            <div class="nav-item">
+                <a href="{{ route('index.category') }}" class="nav-link"><i class="fa fa-list me-4"></i>Danh mục sản phẩm</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ route('index.menu') }}" class="nav-link"><i class="fa fa-list me-4"></i>Menus</a>
             </div>
         </div>
     </nav>
