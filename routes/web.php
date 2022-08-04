@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::get('/home', function () {
+route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
+route::get('/', function(){
+    return view('client.index');
+});
 
 route::prefix('admin')->group(function () {
 
