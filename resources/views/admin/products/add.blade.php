@@ -44,7 +44,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content">Nội dung</label>
-                    <textarea class="form-control" name="content" rows="3"></textarea>
+                    <textarea class="form-control" name="content" id="content" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Tạo sản phẩm</button>
             </form>
@@ -54,6 +54,7 @@
 
 @section('js')
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
         $(function() {
             $(".tag_select_choose").select2({
@@ -65,7 +66,16 @@
                 allowClear: true
             })
         })
+        var options = {
+            filebrowserImageBrowseUrl: '/filemanager?type=Images',
+            filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/filemanager?type=Files',
+            filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+        };
     </script>
+    <script>
+        CKEDITOR.replace('content', options);
+        </script>
 @endsection
 
 @section('footer')

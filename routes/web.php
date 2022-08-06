@@ -21,13 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 #TRANG CHỦ
-route::get('/',[HomeController::class,'index'])->name('home.client');
+route::get('/', [HomeController::class, 'index'])->name('home.client');
 
 #ĐĂNG NHẬP
 route::get('/login', [AdminController::class, 'login'])->name('login');
 route::post('/login', [AdminController::class, 'saveLogin']);
-Route::get('/logout',[AdminController::class,'logout'])->name('logout');
-
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 #TRANG QUẢN TRỊ
 route::prefix('admin')->middleware('auth')->group(function () {
 
@@ -68,6 +70,5 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
         route::get('/add', [ProductController::class, 'create'])->name('create.product.admin');
         route::post('/store', [ProductController::class, 'store'])->name('store.product.admin');
-
     });
 });
