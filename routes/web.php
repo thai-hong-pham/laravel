@@ -23,11 +23,12 @@ use Illuminate\Support\Facades\Route;
 route::get('home',[HomeController::class,'index'])->name('home.client');
 
 #ĐĂNG NHẬP
-route::get('/login', [AdminController::class, 'login'])->name('login.admin');
+route::get('/login', [AdminController::class, 'login'])->name('login');
 route::post('/login', [AdminController::class, 'saveLogin']);
+Route::get('/logout',[AdminController::class,'logout'])->name('logout');
 
 #TRANG QUẢN TRỊ
-route::prefix('admin')->group(function () {
+route::prefix('admin')->middleware('auth')->group(function () {
 
     route::get('/dashboard', [DashboardController::class, 'index'])->name('home.admin');
 
