@@ -11,3 +11,4 @@
 
 <!-- Template Javascript -->
 <script src="/admin/js/main.js"></script>
+@yield('js')

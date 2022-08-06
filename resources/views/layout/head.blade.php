@@ -29,5 +29,6 @@
 
     <!-- Template Stylesheet -->
     <link href="/admin/css/style.css" rel="stylesheet">
+    @yield('css')
 </head>
 

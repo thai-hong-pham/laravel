@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function login(){
+        if(auth()->check()){
+            return redirect()->route('home.admin');
+        }
         return view('login');
     }
 

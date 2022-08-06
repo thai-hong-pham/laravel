@@ -15,10 +15,13 @@
         </div>
         <div class="navbar-nav w-100">
             <div class="nav-item">
-                <a href="{{ route('index.category') }}" class="nav-link"><i class="fa fa-list me-4"></i>Danh mục sản phẩm</a>
+                <a href="{{ route('index.category.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Danh mục sản phẩm</a>
             </div>
             <div class="nav-item">
-                <a href="{{ route('index.menu') }}" class="nav-link"><i class="fa fa-list me-4"></i>Menus</a>
+                <a href="{{ route('index.menu.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Menus</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ route('index.product.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Product</a>
             </div>
         </div>
     </nav>

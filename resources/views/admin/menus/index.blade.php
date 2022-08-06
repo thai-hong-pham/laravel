@@ -13,7 +13,7 @@
                                 <th scope="col">Tên menu</th>
                                 <th scope="col">Menu cha</th>
                                 <th scope="col">Slug</th>
-                                <th scope="col"><a href="{{ route('create.menu') }}" class="btn btn-success">Thêm
+                                <th scope="col"><a href="{{ route('create.menu.admin') }}" class="btn btn-success">Thêm
                                         mới</a></th>
                             </tr>
                         </thead>
@@ -26,9 +26,9 @@
                                     <td>{{ $value->slug }}</td>
                                     <td>
                                         <a class="btn btn-primary"
-                                            href="{{ route('edit.menu',['id' => $value->id]) }}">Sửa</a>
+                                            href="{{ route('edit.menu.admin',['id' => $value->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
-                                            href="{{ route('delete.menu',['id' => $value->id]) }}">Xóa</a>
+                                            href="{{ route('delete.menu.admin',['id' => $value->id]) }}">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach

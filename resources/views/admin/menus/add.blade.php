@@ -6,7 +6,7 @@
     <div class="col-sm-12  justify-content">
         <div class="bg-light rounded h-100 p-4">
             <h4 class="mb-4">Thêm Menu</h4>
-            <form action="{{ route('store.menu') }}" method="POST">
+            <form action="{{ route('store.menu.admin') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="category" class="form-label">Tên menu</label>
