@@ -4,7 +4,8 @@
 @endsection
 
 @section('css')
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('vendors/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin-docs/product/add/add.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -53,29 +54,20 @@
 @endsection
 
 @section('js')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('admin-docs/product/add/add.js') }}"></script>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
-        $(function() {
-            $(".tag_select_choose").select2({
-                tags: true,
-                tokenSepartors: [',', ' ']
-            })
-            $(".select2_init").select2({
-                placehoder: "Chọn danh mục",
-                allowClear: true
-            })
-        })
         var options = {
-            filebrowserImageBrowseUrl: '/filemanager?type=Images',
-            filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/filemanager?type=Files',
-            filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
     </script>
     <script>
         CKEDITOR.replace('content', options);
-        </script>
+    </script>
 @endsection
 
 @section('footer')

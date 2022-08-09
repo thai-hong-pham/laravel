@@ -27,13 +27,11 @@ route::get('/', [HomeController::class, 'index'])->name('home.client');
 route::get('/login', [AdminController::class, 'login'])->name('login');
 route::post('/login', [AdminController::class, 'saveLogin']);
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+
 #TRANG QUẢN TRỊ
 route::prefix('admin')->middleware('auth')->group(function () {
 
-    route::get('/dashboard', [DashboardController::class, 'index'])->name('home.admin');
+    route::get('/', [DashboardController::class, 'index'])->name('home.admin');
 
     #QUẢN TRỊ DANH MỤC
     route::prefix('categories')->group(function () {

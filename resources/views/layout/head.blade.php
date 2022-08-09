@@ -21,14 +21,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/layout-admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/layout-admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layout-admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="/admin/css/style.css" rel="stylesheet">
+    <link href="/layout-admin/css/style.css" rel="stylesheet">
+
     @yield('css')
 </head>
 
