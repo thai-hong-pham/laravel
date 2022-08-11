@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Danh mục</label>
-                    <select name="parent_id" class="form-select select2_init" aria-label="Default select example">
+                    <select name="category_id" class="form-select select2_init" aria-label="Default select example">
                         <option selected value="">Chọn danh mục</option>
                         {!! $htmlOption !!}
                     </select>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content">Nội dung</label>
-                    <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                    <textarea class="form-control" name="contents" id="content" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Tạo sản phẩm</button>
             </form>
@@ -55,16 +55,8 @@
 
 @section('js')
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('admin-docs/product/add/add.js') }}"></script>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-    <script>
-        var options = {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-        };
-    </script>
+    <script src="{{ asset('admin-docs/product/add/add.js') }}"></script>
     <script>
         CKEDITOR.replace('content', options);
     </script>

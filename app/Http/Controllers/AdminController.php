@@ -7,26 +7,31 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function login(){
-        if(auth()->check()){
+
+
+    public function login()
+    {
+        if (auth()->check()) {
             return redirect()->route('home.admin');
         }
         return view('login');
     }
 
-    public function saveLogin(Request $request){
-        $remember = $request->has('remember') ? true : false ;
-        if(auth()->attempt([
+    public function saveLogin(Request $request)
+    {
+        $remember = $request->has('remember') ? true : false;
+        if (auth()->attempt([
             'email' => $request->email,
             'password' => $request->password
-        ], $remember)){
+        ], $remember)) {
             return redirect(route('home.admin'));
-        }else{
+        } else {
             return redirect()->back();
         };
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
