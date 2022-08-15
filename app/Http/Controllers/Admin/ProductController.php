@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductTag;
+use App\Models\Tag;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,15 +19,25 @@ class ProductController extends Controller
     use StorageImageTrait;
 
     private $category;
-    public function __construct(Category $category, Product $product, ProductImage $productImage)
+    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag, ProductTag $productTag)
     {
         $this->product = $product;
         $this->category = $category;
         $this->productImage = $productImage;
+        $this->tag = $tag;
+        $this->productTag = $productTag;
     }
     public function index()
     {
         return view('admin.products.index');
+    }
+
+    public function getCategory($parentId)
+    {
+        $data = $this->category->all();
+        $recusive = new Recusive($data);
+        $htmlOption = $recusive->categoryRecusive($parentId);
+        return $htmlOption;
     }
 
     public function create()
@@ -53,21 +65,20 @@ class ProductController extends Controller
 
         // Insert data to product_images
         if ($request->hasFile('image_path')) {
-            foreach($request->image_path as $fileItem){
-                $dataProductImageDetail = $this->storageTraitUploadMultiple($fileItem,'products');
+            foreach ($request->image_path as $fileItem) {
+                $dataProductImageDetail = $this->storageTraitUploadMultiple($fileItem, 'products');
                 $product->images()->create([
                     'image_path' => $dataProductImageDetail['file_path'],
                     'image_name' => $dataProductImageDetail['file_name']
                 ]);
             }
         }
-    }
-
-    public function getCategory($parentId)
-    {
-        $data = $this->category->all();
-        $recusive = new Recusive($data);
-        $htmlOption = $recusive->categoryRecusive($parentId);
-        return $htmlOption;
+        // Insert tag for product
+        foreach ($request->tags as $tagItem) {
+            // insert to tags
+            $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
+            $tagIds[] = $tagInstance->id;
+        }
+        $product->tags()->attach($tagIds);
     }
 }
