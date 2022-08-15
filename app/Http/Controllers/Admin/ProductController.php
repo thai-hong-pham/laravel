@@ -31,7 +31,8 @@ class ProductController extends Controller
     }
     public function index()
     {
-        return view('admin.products.index');
+        $products = $this->product->latest()->paginate(5);
+        return view('admin.products.index',compact('products'));
     }
 
     public function getCategory($parentId)
@@ -77,11 +78,14 @@ class ProductController extends Controller
                 }
             }
             // Insert tag for product
-            foreach ($request->tags as $tagItem) {
-                // insert to tags
-                $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
-                $tagIds[] = $tagInstance->id;
+            if(!empty($request->tags)){
+                foreach ($request->tags as $tagItem) {
+                    // insert to tags
+                    $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
+                    $tagIds[] = $tagInstance->id;
+                }
             }
+
             $product->tags()->attach($tagIds);
             DB::commit();
             return redirect()->route('index.product.admin');

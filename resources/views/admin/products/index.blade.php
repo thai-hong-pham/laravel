@@ -1,5 +1,9 @@
 @extends('layout.main')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('admin-docs/product/index/index.css') }}">
+
+@endsection
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
@@ -9,49 +13,38 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">#</th>
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Hình ảnh</th>
-                                <th scope="col">Danh mục</th>
                                 <th scope="col">Nội dung</th>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Mã danh mục</th>
+                                <th scope="col">Danh mục</th>
                                 <th scope="col"><a href="{{ route('create.product.admin') }}" class="btn btn-success">Thêm
                                         mới</a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td>Iphone 11</td>
-                            <td>9.000.000Đ</td>
-                            <td></td>
-                            <td>1</td>
-                            <td>sssssssssssssss</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>
-                                <a class="btn btn-primary"
-                                    href="">Sửa</a>
-                                <a class="btn btn-danger"
-                                    href="">Xóa</a>
-                            </td>
-                            {{-- @foreach ($categories as $value)
+
+                            @foreach ($products as $value)
                                 <tr>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
-                                    <td>{{ $value->parent_id }}</td>
-                                    <td>{{ $value->slug }}</td>
+                                    <td>{{ $value->price }}</td>
+                                    <td><img class="product_image_150_100" src="{{ $value->feature_image_path }}" alt=""></td>
+                                    <td>{{ $value->content }}</td>
+                                    <td>{{ $value->category->name }}</td>
                                     <td>
-                                        <a class="btn btn-primary"
-                                            href="{{ route('edit.category.admin', ['id' => $value->id]) }}">Sửa</a>
+                                        {{-- <a class="btn btn-primary"
+                                            href="{{ route('edit.product.admin', ['id' => $value->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
-                                            href="{{ route('delete.category.admin', ['id' => $value->id]) }}">Xóa</a>
+                                            href="{{ route('delete.product.admin', ['id' => $value->id]) }}">Xóa</a> --}}
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="col-md-12">
-                        {{-- {{ $categories->links() }} --}}
+                        {{ $products->links() }}
                     </div>
 
                 </div>
