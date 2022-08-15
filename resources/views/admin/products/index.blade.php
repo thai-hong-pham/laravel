@@ -34,10 +34,10 @@
                                     <td>{{ $value->content }}</td>
                                     <td>{{ $value->category->name }}</td>
                                     <td>
-                                        {{-- <a class="btn btn-primary"
+                                        <a class="btn btn-primary"
                                             href="{{ route('edit.product.admin', ['id' => $value->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
-                                            href="{{ route('delete.product.admin', ['id' => $value->id]) }}">Xóa</a> --}}
+                                            href="{{ route('delete.product.admin', ['id' => $value->id]) }}">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach
