@@ -2,7 +2,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('admin-docs/product/index/index.css') }}">
-
 @endsection
 @section('content')
     <div class="col-12">
@@ -19,7 +18,8 @@
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Nội dung</th>
                                 <th scope="col">Danh mục</th>
-                                <th scope="col"><a href="{{ route('create.product.admin') }}" class="btn btn-success">Thêm
+                                <th scope="col"><a href="{{ route('create.product.admin') }}"
+                                        class="btn btn-success">Thêm
                                         mới</a></th>
                             </tr>
                         </thead>
@@ -30,7 +30,8 @@
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->price }}</td>
-                                    <td><img class="product_image_150_100" src="{{ $value->feature_image_path }}" alt=""></td>
+                                    <td><img class="product_image_150_100" src="{{ $value->feature_image_path }}"
+                                            alt=""></td>
                                     <td>{{ $value->content }}</td>
                                     <td>{{ $value->category->name }}</td>
                                     <td>

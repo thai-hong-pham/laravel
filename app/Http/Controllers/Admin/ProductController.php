@@ -155,7 +155,8 @@ class ProductController extends Controller
     }
 
     public function delete($id) {
-        // return $this->deleteModelTrait($id, $this->product);
+        $this->product->find($id)->delete();
+        return redirect(route('index.product.admin'));
     }
 
 }
