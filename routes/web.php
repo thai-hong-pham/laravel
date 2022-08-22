@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -73,5 +74,15 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::post('/update/{id}', [ProductController::class, 'update'])->name('update.product.admin');
 
         route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete.product.admin');
+    });
+
+    #QUẢN LÝ SLIDERS
+    route::prefix('slider')->group(function () {
+
+        route::get('/', [SliderController::class, 'index'])->name('index.slider.admin');
+
+        route::get('/add', [SliderController::class, 'create'])->name('add.slider.admin');
+        route::post('/store', [SliderController::class, 'store'])->name('store.slider.admin');
+        
     });
 });

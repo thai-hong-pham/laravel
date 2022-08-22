@@ -33,7 +33,7 @@ class MenuController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect(route('index.menu'));
+        return redirect(route('index.menu.admin'));
     }
 
     public function edit( $id,Request $request){

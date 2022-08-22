@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Components\Recusive;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductAddRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -49,7 +50,7 @@ class ProductController extends Controller
         return view('admin.products.add', compact('htmlOption'));
     }
 
-    public function store(Request $request)
+    public function store(ProductAddRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -88,7 +89,7 @@ class ProductController extends Controller
 
             $product->tags()->attach($tagIds);
             DB::commit();
-            return redirect()->route('index.product.admin');
+            return redirect()->route('index.product.admin')->with('msg','Thêm mới thành công!');
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . 'Line : ' . $exception->getLine());
@@ -102,7 +103,8 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('htmlOption', 'product'));
     }
 
-    public function update(Request $request, $id)
+
+    public function update(ProductAddRequest $request, $id)
     {
         try {
             DB::beginTransaction();
@@ -146,13 +148,14 @@ class ProductController extends Controller
             }
             $product->tags()->sync($tagIds);
             DB::commit();
-            return redirect()->route('index.product.admin');
+            return redirect()->route('index.product.admin')->with('msg','Thêm mới thành công!');
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
         }
 
     }
+
 
     public function delete($id) {
         $this->product->find($id)->delete();

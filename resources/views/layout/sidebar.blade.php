@@ -23,6 +23,9 @@
             <div class="nav-item">
                 <a href="{{ route('index.product.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Product</a>
             </div>
+            <div class="nav-item">
+                <a href="{{ route('index.slider.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Slider</a>
+            </div>
         </div>
     </nav>
 </div>
