@@ -83,6 +83,11 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
         route::get('/add', [SliderController::class, 'create'])->name('add.slider.admin');
         route::post('/store', [SliderController::class, 'store'])->name('store.slider.admin');
-        
+
+        route::get('/edit/{id}',[SliderController::class, 'edit'])->name('edit.slider.admin');
+        route::post('/update/{id}',[SliderController::class,'update'])->name('update.slider.admin');
+
+        route::get('/delete/{id}', [SliderController::class, 'delete'])->name('delete.slider.admin');
+
     });
 });
