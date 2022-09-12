@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
@@ -84,10 +85,17 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::get('/add', [SliderController::class, 'create'])->name('add.slider.admin');
         route::post('/store', [SliderController::class, 'store'])->name('store.slider.admin');
 
-        route::get('/edit/{id}',[SliderController::class, 'edit'])->name('edit.slider.admin');
-        route::post('/update/{id}',[SliderController::class,'update'])->name('update.slider.admin');
+        route::get('/edit/{id}', [SliderController::class, 'edit'])->name('edit.slider.admin');
+        route::post('/update/{id}', [SliderController::class, 'update'])->name('update.slider.admin');
 
         route::get('/delete/{id}', [SliderController::class, 'delete'])->name('delete.slider.admin');
+    });
 
+    #QUẢN LÝ SETTINGS
+    route::prefix('settings')->group(function () {
+        route::get('/', [SettingController::class, 'index'])->name(('index.settings.admin'));
+
+        route::get('/add', [SettingController::class, 'create'])->name('add.settings.admin');
+        route::post('/store',[SettingController::class,'store'])->name('store.settings.admin');
     });
 });

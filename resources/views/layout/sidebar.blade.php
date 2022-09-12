@@ -26,6 +26,9 @@
             <div class="nav-item">
                 <a href="{{ route('index.slider.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Slider</a>
             </div>
+            <div class="nav-item">
+                <a href="{{ route('index.settings.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Settings</a>
+            </div>
         </div>
     </nav>
 </div>
