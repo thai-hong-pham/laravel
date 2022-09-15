@@ -1,3 +1,4 @@
+
 @extends('layout.main')
 @section('content')
     <div class="col-12">
@@ -32,17 +33,21 @@
                         <tbody>
 
                             @foreach ($settings as $value)
-                            <tr>
-                                <td>#</td>
-                                <td>{{ $value->config_key }}</td>
-                                <td> {{ $value->config_value }} </td>
-                                <td><a href="" class="btn btn-primary">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->config_key }}</td>
+                                    <td> {{ $value->config_value }} </td>
+                                    <td><a href="{{ route('edit.settings.admin', ['id' => $value->id]) . '?type=' . $value->type }}"
+                                            class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('delete.settings.admin', ['id' => $value->id]) }}" onclick="confirm('Do you wanna delete it ?')" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="col-md-12">
+                        {{ $settings->links() }}
+                    </div>
                 </div>
             </div>
         </div>

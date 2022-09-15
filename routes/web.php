@@ -97,5 +97,11 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
         route::get('/add', [SettingController::class, 'create'])->name('add.settings.admin');
         route::post('/store',[SettingController::class,'store'])->name('store.settings.admin');
+
+
+        route::get('/update/{id}',[SettingController::class, 'edit'])->name('edit.settings.admin');
+        route::post('/update/{id}',[SettingController::class, 'update'])->name('update.settings.admin');
+
+        route::get('/delete/{id}',[SettingController::class, 'delete'])->name('delete.settings.admin');
     });
 });

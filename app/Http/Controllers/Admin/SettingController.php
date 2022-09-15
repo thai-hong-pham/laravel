@@ -31,4 +31,24 @@ class SettingController extends Controller
         ]);
         return redirect(route('index.settings.admin'));
     }
+
+    public function edit($id)
+    {
+        $setting = $this->setting->find($id);
+        return view('admin.settings.edit', compact('setting'));
+    }
+
+    public function update($id , Request $request){
+        $this->setting->find($id)->update([
+            'config_key' => $request->config_key,
+            'config_value' => $request->config_value
+        ]);
+        return redirect(route('index.settings.admin'));
+
+    }
+
+    public function delete($id){
+        $this->setting->find($id)->delete();
+        return redirect(route('index.settings.admin'));
+    }
 }
