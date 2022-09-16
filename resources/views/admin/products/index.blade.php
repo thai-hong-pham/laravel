@@ -38,6 +38,7 @@
                                         <a class="btn btn-primary"
                                             href="{{ route('edit.product.admin', ['id' => $value->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
+                                            onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
                                             href="{{ route('delete.product.admin', ['id' => $value->id]) }}">Xóa</a>
                                     </td>
                                 </tr>

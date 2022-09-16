@@ -27,7 +27,7 @@
                                     <td>
                                         <a class="btn btn-primary"
                                             href="{{ route('edit.menu.admin',['id' => $value->id]) }}">Sửa</a>
-                                        <a class="btn btn-danger"
+                                        <a class="btn btn-danger" onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
                                             href="{{ route('delete.menu.admin',['id' => $value->id]) }}">Xóa</a>
                                     </td>
                                 </tr>

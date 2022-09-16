@@ -27,9 +27,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-primary"
-                                            href="{{ route('edit.slider.admin',['id' => $item->id]) }}">Sửa</a>
+                                            href="{{ route('edit.slider.admin', ['id' => $item->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
-                                            href="{{ route('delete.slider.admin',['id' => $item->id]) }}">Xóa</a>
+                                            onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
+                                            href="{{ route('delete.slider.admin', ['id' => $item->id]) }}">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
@@ -37,6 +38,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
     #QUẢN TRỊ DANH MỤC
     route::prefix('categories')->group(function () {
+
         route::get('/', [CategoryController::class, 'index'])->name('index.category.admin');
 
         // THÊM DANH MỤC
@@ -53,6 +55,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
     #QUẢN TRỊ MENUS
     route::prefix('menus')->group(function () {
+
         route::get('/', [MenuController::class, 'index'])->name('index.menu.admin');
 
         route::get('/add', [MenuController::class, 'create'])->name('create.menu.admin');
@@ -66,6 +69,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
     #QUẢN TRỊ SẢN PHẨM
     route::prefix('product')->group(function () {
+
         route::get('/', [ProductController::class, 'index'])->name('index.product.admin');
 
         route::get('/add', [ProductController::class, 'create'])->name('create.product.admin');
@@ -93,15 +97,30 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
     #QUẢN LÝ SETTINGS
     route::prefix('settings')->group(function () {
+
         route::get('/', [SettingController::class, 'index'])->name(('index.settings.admin'));
 
         route::get('/add', [SettingController::class, 'create'])->name('add.settings.admin');
-        route::post('/store',[SettingController::class,'store'])->name('store.settings.admin');
+        route::post('/store', [SettingController::class, 'store'])->name('store.settings.admin');
 
 
-        route::get('/update/{id}',[SettingController::class, 'edit'])->name('edit.settings.admin');
-        route::post('/update/{id}',[SettingController::class, 'update'])->name('update.settings.admin');
+        route::get('/update/{id}', [SettingController::class, 'edit'])->name('edit.settings.admin');
+        route::post('/update/{id}', [SettingController::class, 'update'])->name('update.settings.admin');
 
-        route::get('/delete/{id}',[SettingController::class, 'delete'])->name('delete.settings.admin');
+        route::get('/delete/{id}', [SettingController::class, 'delete'])->name('delete.settings.admin');
+    });
+
+    #USER
+    route::prefix('users')->group(function () {
+
+        route::get('/', [AdminUserController::class, 'index'])->name('index.user.admin');
+
+        route::get('/add', [AdminUserController::class, 'create'])->name('add.user.admin');
+        route::post('/create', [AdminUserController::class, 'store'])->name('store.user.admin');
+
+        route::get('/edit/{id}',[AdminUserController::class, 'edit'])->name('edit.user.admin');
+        route::post('/edit/{id}',[AdminUserController::class, 'update'])->name('update.user.admin');
+
+        route::get('/delete/{id}',[AdminUserController::class,'delete'])->name('delete.user.admin');
     });
 });

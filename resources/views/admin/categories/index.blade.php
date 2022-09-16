@@ -13,7 +13,8 @@
                                 <th scope="col">Tên danh mục</th>
                                 <th scope="col">Danh mục cha</th>
                                 <th scope="col">Slug</th>
-                                <th scope="col"><a href="{{ route('create.category.admin') }}" class="btn btn-success">Thêm
+                                <th scope="col"><a href="{{ route('create.category.admin') }}"
+                                        class="btn btn-success">Thêm
                                         mới</a></th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                         <a class="btn btn-primary"
                                             href="{{ route('edit.category.admin', ['id' => $value->id]) }}">Sửa</a>
                                         <a class="btn btn-danger"
+                                            onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
                                             href="{{ route('delete.category.admin', ['id' => $value->id]) }}">Xóa</a>
                                     </td>
                                 </tr>
