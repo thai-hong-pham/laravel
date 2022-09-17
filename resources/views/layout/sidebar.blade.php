@@ -32,6 +32,9 @@
             <div class="nav-item">
                 <a href="{{ route('index.user.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>User</a>
             </div>
+            <div class="nav-item">
+                <a href="{{ route('index.role.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Roles</a>
+            </div>
         </div>
     </nav>
 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
@@ -122,5 +123,18 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::post('/edit/{id}',[AdminUserController::class, 'update'])->name('update.user.admin');
 
         route::get('/delete/{id}',[AdminUserController::class,'delete'])->name('delete.user.admin');
+    });
+
+    route::prefix('roles')->group(function () {
+
+        route::get('/', [AdminRoleController::class, 'index'])->name('index.role.admin');
+
+        route::get('/add',[AdminRoleController::class,'create'])->name('add.role.admin');
+        route::post('/add',[AdminRoleController::class,'store'])->name('create.role.admin');
+
+        route::get('/edit/{id}',[AdminRoleController::class, 'edit'])->name('edit.role.admin');
+        route::post('/edit/{id}',[AdminRoleController::class, 'update'])->name('update.role.admin');
+
+        route::get('/delete/{id}',[AdminRoleController::class,'delete'])->name('delete.role.admin');
     });
 });
