@@ -45,7 +45,7 @@
                             <div class="card-body text-primary col-md-3">
                                 <h5 class="card-title">
                                     <label>
-                                        <input type="checkbox" value="{{ $permissionsChildrentItem->id }}">
+                                        <input type="checkbox" name="permission_id[]" value="{{ $permissionsChildrentItem->id }}">
                                     </label>
                                     {{ $permissionsChildrentItem->name }}
                                 </h5>
