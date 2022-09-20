@@ -28,7 +28,6 @@
 
             <form action="{{ route('store.user.admin') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 <div class="mt-3">
                     <label for="name" class="form-label">Tên User</label>
                     <input type="text" name="name" class="form-control" placeholder="Nhập tên User"
