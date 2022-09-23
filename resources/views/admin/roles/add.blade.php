@@ -2,6 +2,9 @@
 
 @section('head')
 @endsection
+@section('js')
+    <script src="{{ asset('admins/role/js.js') }}"></script>
+@endsection
 @section('content')
     <div class="col-sm-12  justify-content">
         <div class="bg-light rounded h-100 p-4">
@@ -12,7 +15,7 @@
                 <div class="alert alert-success" role="alert">{{ Session::get('msg') }}</div>
             @endif
 
-            <form action="{{ route('create.role.admin') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('store.role.admin') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mt-3">
@@ -31,29 +34,36 @@
                         <span class="text-danger"><strong>{{ $message }}</strong></span>
                     @enderror
                 </div>
-
+                <div class="col-md-12 mt-3">
+                    <label>
+                        <input type="checkbox" class="checkall">
+                        <strong>Check All</strong>
+                    </label>
+                </div>
                 @foreach ($permissionsParent as $permissionsParentItem)
-                    <div class="card border-primary mt-3">
-                        <div class="card-header" style="background-color: #6699FF;color:aliceblue">
+                    <div class="card border-primary mb-3 col-md-12 mt-3">
+                        <div class="card-header" style="background-color:rgb(110, 110, 110);color:aliceblue;">
                             <label>
-                                <input type="checkbox" value="">
+                                <input type="checkbox" value="" class="checkbox_wrapper">
                             </label>
                             Module {{ $permissionsParentItem->name }}
                         </div>
                         <div class="row">
-                            @foreach ($permissionsParentItem->PermissionChildrent as $permissionsChildrentItem)
-                            <div class="card-body text-primary col-md-3">
-                                <h5 class="card-title">
-                                    <label>
-                                        <input type="checkbox" name="permission_id[]" value="{{ $permissionsChildrentItem->id }}">
-                                    </label>
-                                    {{ $permissionsChildrentItem->name }}
-                                </h5>
-                            </div>
+                            @foreach ($permissionsParentItem->permissionChildrent as $permissionsChildrentItem)
+                                <div class="card-body text-primary col-md-3">
+                                    <h5 class="card-title">
+                                        <label>
+                                            <input type="checkbox" name="permission_id[]" class="checkbox_childrent"
+                                                value="{{ $permissionsChildrentItem->id }}">
+                                        </label>
+                                        {{ $permissionsChildrentItem->name }}
+                                    </h5>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                 @endforeach
+
 
         </div>
     </div>

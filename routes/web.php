@@ -130,7 +130,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::get('/', [AdminRoleController::class, 'index'])->name('index.role.admin');
 
         route::get('/add',[AdminRoleController::class,'create'])->name('add.role.admin');
-        route::post('/add',[AdminRoleController::class,'store'])->name('create.role.admin');
+        route::post('/add',[AdminRoleController::class,'store'])->name('store.role.admin');
 
         route::get('/edit/{id}',[AdminRoleController::class, 'edit'])->name('edit.role.admin');
         route::post('/edit/{id}',[AdminRoleController::class, 'update'])->name('update.role.admin');

@@ -23,11 +23,12 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->display_name }}</td>
                                     <td>
-                                    <a class="btn btn-primary"
-                                        href="">Sửa</a>
-                                    <a class="btn btn-danger" onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
-                                        href="">Xóa</a>
-                                </td>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('edit.role.admin', ['id' => $item->id]) }}">Sửa</a>
+                                        <a class="btn btn-danger"
+                                            onclick="confirm('Bạn có chắc chắn muốn xóa bản ghi này không ?')"
+                                            href="{{ route('delete.role.admin', ['id' => $item->id]) }}">Xóa</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
