@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
@@ -40,7 +41,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
     #QUẢN TRỊ DANH MỤC
     route::prefix('categories')->group(function () {
 
-        route::get('/', [CategoryController::class, 'index'])->name('index.category.admin');
+        route::get('/', [CategoryController::class, 'index'])->name('index.category.admin')->middleware('can:category-list');
 
         // THÊM DANH MỤC
         route::get('/add', [CategoryController::class, 'create'])->name('create.category.admin');
@@ -57,7 +58,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
     #QUẢN TRỊ MENUS
     route::prefix('menus')->group(function () {
 
-        route::get('/', [MenuController::class, 'index'])->name('index.menu.admin');
+        route::get('/', [MenuController::class, 'index'])->name('index.menu.admin')->middleware('can:menu-list');
 
         route::get('/add', [MenuController::class, 'create'])->name('create.menu.admin');
         route::post('/store', [MenuController::class, 'store'])->name('store.menu.admin');
@@ -119,22 +120,28 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::get('/add', [AdminUserController::class, 'create'])->name('add.user.admin');
         route::post('/create', [AdminUserController::class, 'store'])->name('store.user.admin');
 
-        route::get('/edit/{id}',[AdminUserController::class, 'edit'])->name('edit.user.admin');
-        route::post('/edit/{id}',[AdminUserController::class, 'update'])->name('update.user.admin');
+        route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('edit.user.admin');
+        route::post('/edit/{id}', [AdminUserController::class, 'update'])->name('update.user.admin');
 
-        route::get('/delete/{id}',[AdminUserController::class,'delete'])->name('delete.user.admin');
+        route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('delete.user.admin');
     });
 
     route::prefix('roles')->group(function () {
 
         route::get('/', [AdminRoleController::class, 'index'])->name('index.role.admin');
 
-        route::get('/add',[AdminRoleController::class,'create'])->name('add.role.admin');
-        route::post('/add',[AdminRoleController::class,'store'])->name('store.role.admin');
+        route::get('/add', [AdminRoleController::class, 'create'])->name('add.role.admin');
+        route::post('/add', [AdminRoleController::class, 'store'])->name('store.role.admin');
 
-        route::get('/edit/{id}',[AdminRoleController::class, 'edit'])->name('edit.role.admin');
-        route::post('/edit/{id}',[AdminRoleController::class, 'update'])->name('update.role.admin');
+        route::get('/edit/{id}', [AdminRoleController::class, 'edit'])->name('edit.role.admin');
+        route::post('/edit/{id}', [AdminRoleController::class, 'update'])->name('update.role.admin');
 
-        route::get('/delete/{id}',[AdminRoleController::class,'delete'])->name('delete.role.admin');
+        route::get('/delete/{id}', [AdminRoleController::class, 'delete'])->name('delete.role.admin');
+    });
+
+    route::prefix('permissions')->group(function () {
+
+        route::get('/add', [PermissionController::class, 'create'])->name('add.permission.admin');
+        route::post('/add', [PermissionController::class, 'store'])->name('store.permission.admin');
     });
 });
