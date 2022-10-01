@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout-admin.main')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('admin-docs/product/index/index.css') }}">
@@ -33,7 +33,7 @@
                                     <td><img class="product_image_150_100" src="{{ $value->feature_image_path }}"
                                             alt=""></td>
                                     <td>{{ $value->content }}</td>
-                                    <td>{{ $value->category->name }}</td>
+                                    <td>{{ $value->category_id }}</td>
                                     <td>
                                         <a class="btn btn-primary"
                                             href="{{ route('edit.product.admin', ['id' => $value->id]) }}">Sửa</a>

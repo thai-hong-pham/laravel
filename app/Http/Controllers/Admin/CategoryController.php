@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect(route('index.category'));
+        return redirect(route('index.category.admin'));
     }
 
     public function edit($id)
@@ -64,13 +64,13 @@ class CategoryController extends Controller
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
         ]);
-        return redirect(route('index.category'));
+        return redirect(route('index.category.admin'));
     }
 
     public function delete($id)
     {
         $this->category->find($id)->delete();
-        return redirect(route('index.category'));
+        return redirect(route('index.category.admin'));
 
     }
 }

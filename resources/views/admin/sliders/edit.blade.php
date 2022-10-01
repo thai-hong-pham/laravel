@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout-admin.main')
 
 @section('head')
 @endsection
@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="image_path" class="form-label">Hình ảnh</label><br>
-                    <input type="file"name="image_path" class="form-control">
+                    <label for="image_name" class="form-label">Hình ảnh</label><br>
+                    <input type="file"name="image_name" class="form-control">
                     <div class="col-md-4 mt-3">
                         <img src="{{ $slider->image_path }}" width="150px" height="200px" alt="">
                     </div>

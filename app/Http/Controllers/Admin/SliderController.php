@@ -7,6 +7,7 @@ use App\Http\Requests\SliderAddRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Traits\StorageImageTrait;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -30,24 +31,36 @@ class SliderController extends Controller
         return view('admin.sliders.add');
     }
 
-    public function store(SliderAddRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $dataInsert = [
-                'name' => $request->name,
-                'description' => $request->description
-            ];
-            $dataImageSlider = $this->storageTraitUpload($request, 'image_path', 'sliders');
-            if (!empty($dataImageSlider)) {
-                $dataInsert['image_name'] = $dataImageSlider['file_name'];
-                $dataInsert['image_path'] = $dataImageSlider['file_path'];
-            }
-            // dd($dataInsert);
-            $this->slider->create($dataInsert);
-            return redirect()->route('index.slider.admin');
-        } catch (\Exception $exception) {
-            Log::error('Lỗi : ' . $exception->getMessage() . '---Line: ' . $exception->getLine());
+        $dataInsert = [
+            'name' => $request->name,
+            'description' => $request->description
+        ];
+        $dataImageSlider = $this->storageTraitUpload($request, 'image_name', 'sliders');
+        if (!empty($dataImageSlider)) {
+            $dataInsert['image_name'] = $dataImageSlider['file_name'];
+            $dataInsert['image_path'] = $dataImageSlider['file_path'];
         }
+        $this->slider->create($dataInsert);
+        return redirect(route('index.slider.admin'));
+        // try {
+
+        //     $dataInsert = [
+        //         'name' => $request->name,
+        //         'description' => $request->description
+        //     ];
+        //     $dataImageSlider = $this->storageTraitUpload($request, 'image_path', 'sliders');
+        //     if (!empty($dataImageSlider)) {
+        //         $dataInsert['image_name'] = $dataImageSlider['file_name'];
+        //         $dataInsert['image_path'] = $dataImageSlider['file_path'];
+        //     }
+        //     $this->slider->create($dataInsert);
+
+        //     return redirect()->route('index.slider.admin');
+        // } catch (\Exception $exception) {
+        //     Log::error('Lỗi : ' . $exception->getMessage() . '---Line: ' . $exception->getLine());
+        // }
     }
 
     public function edit($id)
@@ -56,19 +69,18 @@ class SliderController extends Controller
         return view('admin.sliders.edit', compact('slider'));
     }
 
-    public function update(SliderAddRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $dataUpdate = [
                 'name' => $request->name,
                 'description' => $request->description
             ];
-            $dataImageSlider = $this->storageTraitUpload($request, 'image_path', 'sliders');
-            if (!empty($dataImageSlider)) {
+            $dataImageSlider = $this->storageTraitUpload($request, 'image_name', 'sliders');
+            if ($dataImageSlider) {
                 $dataUpdate['image_name'] = $dataImageSlider['file_name'];
                 $dataUpdate['image_path'] = $dataImageSlider['file_path'];
             }
-            // dd($dataInsert);
             $this->slider->find($id)->update($dataUpdate);
             return redirect()->route('index.slider.admin');
         } catch (\Exception $exception) {
@@ -76,7 +88,8 @@ class SliderController extends Controller
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $this->slider->find($id)->delete();
         return redirect(route('index.slider.admin'));
     }

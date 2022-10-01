@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout-admin.main')
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">

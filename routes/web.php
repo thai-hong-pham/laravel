@@ -34,14 +34,14 @@ route::post('/login', [AdminController::class, 'saveLogin']);
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 #TRANG QUẢN TRỊ
-route::prefix('admin')->middleware('auth')->group(function () {
+route::prefix('admin')->group(function () {
 
     route::get('/', [DashboardController::class, 'index'])->name('home.admin');
 
     #QUẢN TRỊ DANH MỤC
     route::prefix('categories')->group(function () {
 
-        route::get('/', [CategoryController::class, 'index'])->name('index.category.admin')->middleware('can:category-list');
+        route::get('/', [CategoryController::class, 'index'])->name('index.category.admin');
 
         // THÊM DANH MỤC
         route::get('/add', [CategoryController::class, 'create'])->name('create.category.admin');
@@ -58,7 +58,7 @@ route::prefix('admin')->middleware('auth')->group(function () {
     #QUẢN TRỊ MENUS
     route::prefix('menus')->group(function () {
 
-        route::get('/', [MenuController::class, 'index'])->name('index.menu.admin')->middleware('can:menu-list');
+        route::get('/', [MenuController::class, 'index'])->name('index.menu.admin');
 
         route::get('/add', [MenuController::class, 'create'])->name('create.menu.admin');
         route::post('/store', [MenuController::class, 'store'])->name('store.menu.admin');
