@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('layout.head')
+    @include('layout-admin.head')
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <!-- Spinner End -->
 
         <!-- Sidebar Start -->
-            @include('layout.sidebar')
+            @include('layout-admin.sidebar')
         <!-- Sidebar End -->
 
 
@@ -90,7 +90,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
-@include('layout.footer')
+@include('layout-admin.footer')
 </body>
 
 </html>

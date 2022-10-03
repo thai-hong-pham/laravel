@@ -20,7 +20,7 @@
                     <span class="text-danger"><strong>{{ $message }}</strong></span>
                 @enderror
 
-                @if (request()->type === 'Text')
+                @if (request()->type === 'text')
                     <div class="mb-3">
                         <label for="config_value" class="form-label">Config value</label>
                         <input type="text" name="config_value" class="form-control" id="category"

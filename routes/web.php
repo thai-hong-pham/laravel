@@ -27,11 +27,14 @@ use Illuminate\Support\Facades\Route;
 */
 #TRANG CHỦ
 route::get('/', [HomeController::class, 'index'])->name('home.client');
+route::get('/category/{slug}/{id}',[HomeController::class,'listCategory'])->name('category.product');
+
+
 
 #ĐĂNG NHẬP
 route::get('/login', [AdminController::class, 'login'])->name('login');
 route::post('/login', [AdminController::class, 'saveLogin']);
-Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 #TRANG QUẢN TRỊ
 route::prefix('admin')->group(function () {

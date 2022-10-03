@@ -26,7 +26,7 @@
                 @include('components.sidebar')
 
                 <!-- end sidebar -->
-                
+
                 <div class="col-sm-9 padding-right">
 
                     <!-- features_items -->
