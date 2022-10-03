@@ -29,7 +29,9 @@ use Illuminate\Support\Facades\Route;
 route::get('/', [HomeController::class, 'index'])->name('home.client');
 route::get('/category/{slug}/{id}',[HomeController::class,'listCategory'])->name('category.product');
 
-
+#ADD TO CARD
+route::get('/products/add-to-cart/{id}',[HomeController::class,'addToCart'])->name('addToCart');
+route::get('/products/show-cart',[HomeController::class,'showCart'])->name('showCart');
 
 #ĐĂNG NHẬP
 route::get('/login', [AdminController::class, 'login'])->name('login');
@@ -37,7 +39,7 @@ route::post('/login', [AdminController::class, 'saveLogin']);
 route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 #TRANG QUẢN TRỊ
-route::prefix('admin')->group(function () {
+route::prefix('admin')->middleware('auth')->group(function () {
 
     route::get('/', [DashboardController::class, 'index'])->name('home.admin');
 

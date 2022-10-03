@@ -1,17 +1,40 @@
 @extends('layout-home.master')
 
 @section('title')
-    <title>Eshop|Home</title>
+    <title>Eshopper</title>
 @endsection
 
 @section('css')
     <link href="{{ asset('layout-home/home.css') }}" rel="stylesheet">
 @endsection
 
-
 @section('js')
-    <link rel="stylesheet" href="{{ asset('layout-home/js.css') }}">
+    <link rel="stylesheet" href="{{ asset('layout-home/home.js') }}">
+    <script>
+
+        function addCart() {
+            event.preventDefault();
+            let urlCart = $(this).attr("data-url");
+            $.ajax({
+                type: "GET",
+                url: urlCart,
+                dataType: 'json',
+                success: function(data){
+                    if(data.code === 200){
+                        alert('Add to cart success')
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        }
+        $(function() {
+            $('.add_to_cart').on('click', addCart);
+        })
+    </script>
 @endsection
+
 
 @section('content')
     @include('client.components.slider')
@@ -54,3 +77,5 @@
         </div>
     </section>
 @endsection
+
+

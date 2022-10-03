@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('layout.head')
+    @include('layout-admin.head')
 </head>
 
 <body>
@@ -45,9 +45,9 @@
                             </div>
                             <a href="">Forgot Password</a>
                         </div>
-                        @include('layout.alert')
+                        @include('layout-admin.alert')
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        
+
                     </div>
                 </form>
             </div>
@@ -55,7 +55,7 @@
     </div>
     <!-- Sign In End -->
 </div>
-    @include('layout.footer')
+    @include('layout-admin.footer')
 </body>
 
 </html>

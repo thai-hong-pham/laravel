@@ -31,6 +31,8 @@
     <script src="{{ asset('layout-home/js/price-range.js') }}"></script>
     <script src="{{ asset('layout-home/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('layout-home/js/main.js') }}"></script>
+
+
     @yield('js')
 </body>
 
