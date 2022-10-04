@@ -5,11 +5,11 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Models\Category;
@@ -27,11 +27,17 @@ use Illuminate\Support\Facades\Route;
 */
 #TRANG CHỦ
 route::get('/', [HomeController::class, 'index'])->name('home.client');
-route::get('/category/{slug}/{id}',[HomeController::class,'listCategory'])->name('category.product');
+route::get('/category/{slug}/{id}', [HomeController::class, 'listCategory'])->name('category.product');
 
 #ADD TO CARD
-route::get('/products/add-to-cart/{id}',[HomeController::class,'addToCart'])->name('addToCart');
-route::get('/products/show-cart',[HomeController::class,'showCart'])->name('showCart');
+route::get('/products/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('addToCart');
+route::get('/products/show-cart', [HomeController::class, 'showCart'])->name('showCart');
+route::get('/products/update-cart', [HomeController::class, 'updateCart'])->name('updateCart');
+route::get('products/delete-cart', [HomeController::class, 'deleteCart'])->name('deleteCart');
+
+#CHECKOUT
+route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
+route::post('/place-order',[CheckoutController::class,'placeOrder'])->name('placeOrder');
 
 #ĐĂNG NHẬP
 route::get('/login', [AdminController::class, 'login'])->name('login');

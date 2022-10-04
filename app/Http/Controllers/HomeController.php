@@ -34,9 +34,9 @@ class HomeController extends Controller
 
         $product = Product::find($id);
         $cart = session()->get('cart');
-        if(isset($cart[$id])){
+        if (isset($cart[$id])) {
             $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
-        }else{
+        } else {
             $cart[$id] = [
                 'name' => $product->name,
                 'price' => $product->price,
@@ -44,16 +44,47 @@ class HomeController extends Controller
                 'quantity' => 1
             ];
         }
-        session()->put('cart',$cart);
+        session()->put('cart', $cart);
         return response()->json([
             'code' => 200,
             'message' => 'success'
         ], 200);
     }
 
-    public function showCart(){
+    public function showCart()
+    {
         $carts = session()->get('cart');
         $categoriesLimit = Category::where('parent_id', 0)->take(3)->get();
-        return view('client.products.cart',compact('categoriesLimit','carts'));
+        return view('client.products.cart', compact('categoriesLimit', 'carts'));
+    }
+
+    public function updateCart(Request $request)
+    {
+        if ($request->id && $request->quantity) {
+            $carts = session()->get('cart');
+            $carts[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $carts);
+            $carts = session()->get('cart');
+            $cartComponent = view('client.products.components.cart_component', compact('carts'))->render();
+            return response()->json([
+                'cart_component' => $cartComponent,
+                'code' => 200
+            ], 200);
+        }
+    }
+
+    public function deleteCart(Request $request)
+    {
+        if ($request->id) {
+            $carts = session()->get('cart');
+            unset($carts[$request->id]);
+            session()->put('cart', $carts);
+            $carts = session()->get('cart');
+            $cartComponent = view('client.products.components.cart_component', compact('carts'))->render();
+            return response()->json([
+                'cart_component' => $cartComponent,
+                'code' => 200
+            ], 200);
+        }
     }
 }
