@@ -21,7 +21,7 @@
                 dataType: 'json',
                 success: function(data){
                     if(data.code === 200){
-                        alert('Add to cart success')
+                        alert('Thêm vào giỏ hàng thành công !!!')
                     }
                 },
                 error: function(data){

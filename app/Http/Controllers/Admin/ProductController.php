@@ -57,7 +57,8 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'content' => $request->contents,
-                'category_id' => $request->category_id
+                'category_id' => $request->category_id,
+                'view_count' => 1
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'products');
             if (!empty($dataUploadFeatureImage)) {
@@ -125,7 +126,7 @@ class ProductController extends Controller
             if ($request->hasFile('image_path')) {
                 $this->productImage->where('product_id', $id)->delete();
                 foreach ($request->image_path as $fileItem) {
-                    $dataProductImageDetail = $this->storageTraitUploadMutiple($fileItem, 'product');
+                    $dataProductImageDetail = $this->storageTraitUploadMultiple($fileItem, 'product');
                     $product->images()->create([
                         'image_path' => $dataProductImageDetail['file_path'],
                         'image_name' => $dataProductImageDetail['file_name']

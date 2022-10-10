@@ -21,7 +21,7 @@
                 <a href="{{ route('index.menu.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Menus</a>
             </div>
             <div class="nav-item">
-                <a href="{{ route('index.product.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Product</a>
+                <a href="{{ route('index.product.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Sản phẩm</a>
             </div>
             <div class="nav-item">
                 <a href="{{ route('index.slider.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Slider</a>
@@ -30,7 +30,10 @@
                 <a href="{{ route('index.settings.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Settings</a>
             </div>
             <div class="nav-item">
-                <a href="{{ route('index.user.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>User</a>
+                <a href="{{ route('index.user.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Người dùng</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ route('index.order.admin') }}" class="nav-link"><i class="fa fa-list me-4"></i>Đơn hàng</a>
             </div>
         </div>
     </nav>

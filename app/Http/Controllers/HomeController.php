@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $sliders = Slider::latest()->get();
         $categories = Category::where('parent_id', 0)->get();
-        $products = Product::latest()->take(6)->get();
+        $products = Product::latest()->take(12)->get();
         $recommendProducts = Product::latest('view_count', ' desc')->take(12)->get();
         $categoriesLimit = Category::where('parent_id', 0)->take(3)->get();
         return view('client.index', compact('sliders', 'categories', 'products', 'recommendProducts', 'categoriesLimit'));
@@ -25,8 +25,17 @@ class HomeController extends Controller
     {
         $categories = Category::where('parent_id', 0)->get();
         $categoriesLimit = Category::where('parent_id', 0)->take(3)->get();
-        $products = Product::where('category_id', $category_id)->paginate(9);
+        $products = Product::where('category_id', $category_id)->paginate(12);
         return view('client.products.categories.list', compact('categories', 'categoriesLimit', 'products'));
+    }
+
+    public function detailProduct($id)
+    {
+        $categories = Category::where('parent_id', 0)->get();
+        $categoriesLimit = Category::where('parent_id', 0)->take(3)->get();
+        $productDetail = Product::find($id);
+
+        return view('client.products.categories.detail_product', compact('categoriesLimit', 'productDetail', 'categories'));
     }
 
     public function addToCart($id)

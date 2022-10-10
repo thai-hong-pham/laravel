@@ -16,7 +16,7 @@
                                 </a>
                             @else
                                 <a
-                                    href="{{ route('category.product', ['slug' => $categoryChildrent->slug, 'id' => $categoryChildrent->id]) }}">
+                                    href="{{ route('category.product', ['slug' => $category->slug, 'id' => $category->id]) }}">
                                     <span class="badge pull-right">
                                     </span>
                                     {{ $category->name }}

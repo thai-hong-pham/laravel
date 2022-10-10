@@ -78,7 +78,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content">Nội dung</label>
-                    <textarea class="form-control" name="contents" id="content" rows="3">{{ $product->content }}</textarea>
+                    <textarea class="form-control" name="contents" id="" rows="10">{{ $product->content }}</textarea>
                     @error('contents')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

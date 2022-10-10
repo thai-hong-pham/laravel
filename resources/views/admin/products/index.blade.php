@@ -13,10 +13,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col" class="col-md-2">Tên sản phẩm</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Hình ảnh</th>
-                                <th scope="col">Nội dung</th>
+                                <th scope="col" class="col-md-4">Nội dung</th>
                                 <th scope="col">Danh mục</th>
                                 <th scope="col"><a href="{{ route('create.product.admin') }}"
                                         class="btn btn-success">Thêm
@@ -33,7 +33,7 @@
                                     <td><img class="product_image_150_100" src="{{ $value->feature_image_path }}"
                                             alt=""></td>
                                     <td>{{ $value->content }}</td>
-                                    <td>{{ $value->category_id }}</td>
+                                    <td>{{ $value->category->name }}</td>
                                     <td>
                                         <a class="btn btn-primary"
                                             href="{{ route('edit.product.admin', ['id' => $value->id]) }}">Sửa</a>

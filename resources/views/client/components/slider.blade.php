@@ -24,8 +24,6 @@
                             <div class="col-sm-6">
                                 <img src="{{ $slider->image_path }}"
                                     class="girl img-responsive" alt="" />
-                                <img src="{{ asset('layout-home/images/home/pricing.png') }}" class="pricing"
-                                    alt="" />
                             </div>
                         </div>
 

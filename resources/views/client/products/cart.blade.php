@@ -27,7 +27,7 @@
                 success: function(data) {
                     if (data.code === 200) {
                         $('.cart_wrapper').html(data.cart_component);
-                        alert('Cập nhật thành công');
+                        alert('Cập nhật giỏ hàng thành công!!!');
                     }
                 },
                 error: function() {
@@ -49,7 +49,7 @@
                 success: function(data) {
                     if (data.code === 200) {
                         $('.cart_wrapper').html(data.cart_component);
-                        alert('Cập nhật thành công');
+                        alert('Cập nhật giỏ hàng thành công!!!');
                     }
                 },
                 error: function() {
@@ -72,8 +72,12 @@
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
+        @if (!empty($successMsg))
+            <div class="alert alert-success"> {{ $successMsg }}</div>
+        @endif
         <div class="cart_wrapper">
             @include('client.products.components.cart_component')
         </div>
+
     </div>
 @endsection

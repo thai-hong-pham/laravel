@@ -10,7 +10,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Tên slider</th>
-                                <th scope="col">Mô tả</th>
+                                <th scope="col" class="col-md-4">Mô tả</th>
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">
                                     <a href="{{ route('add.slider.admin') }}" class="btn btn-success">Thêm mới</a>
@@ -23,7 +23,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->description }}</td>
-                                    <td><img src="{{ $item->image_path }}" alt="" width="150px" height="200px">
+                                    <td><img src="{{ $item->image_path }}" alt="" width="250px" height="250px">
                                     </td>
                                     <td>
                                         <a class="btn btn-primary"

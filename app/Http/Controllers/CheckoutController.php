@@ -16,6 +16,7 @@ class CheckoutController extends Controller
     }
 
     public function placeOrder(Request $request){
+        $categoriesLimit = Category::where('parent_id', 0)->take(3)->get();
         $order = new Order();
         $order->name = $request->input('name');
         $order->email = $request->input('email');
@@ -38,6 +39,6 @@ class CheckoutController extends Controller
             ]);
         }
         $cartItems = session()->flush('cart');
-        return view('client.products.cart');
+        return view('client.products.cart',compact('categoriesLimit'))->with('successMsg','Đặt hàng thành công !!!');
     }
 }

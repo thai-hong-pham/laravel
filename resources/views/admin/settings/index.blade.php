@@ -11,7 +11,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Config key</th>
-                                <th scope="col">Config value</th>
+                                <th scope="col" class="col-md-7">Config value</th>
                                 <th scope="col">
 
                                     <div class="dropdown">

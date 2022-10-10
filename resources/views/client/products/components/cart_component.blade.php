@@ -2,11 +2,11 @@
     <table class="table table-condensed update_cart_url" data-url="{{ route('updateCart') }}">
         <thead>
             <tr class="cart_menu">
-                <td class="item">Product</td>
+                <td class="item" style="text-align: center">Product</td>
                 <td class="image" style="text-align: center">Image</td>
-                <td class="price">Price</td>
-                <td class="quantity">Quantity</td>
-                <td class="total">Total</td>
+                <td class="price" style="text-align: center">Price</td>
+                <td class="quantity" style="text-align: center">Quantity</td>
+                <td class="total" style="text-align: center">Total</td>
                 <td colspan="2" style="text-align: center">Action</td>
                 <td></td>
             </tr>
@@ -59,9 +59,9 @@
         </tbody>
     </table>
     <div class="col-12 flex">
-        <a class="btn btn-success" href="{{ route('checkout.index') }}" style="float:right;size:18em;">Proceed to
+        <a class="btn btn-success" href="{{ route('checkout.index') }}" style="float:right;width:25%;margin-top:20px;">Proceed to
             Checkout</a>
-        <h2 style="float:right;margin-right:60px">Total: {{ number_format($total) }} VNĐ</h2>
+        <h2 style="float:right;margin-right:10px">Total: {{ number_format($total) }} VNĐ</h2>
 
     </div>
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 #TRANG CHỦ
 route::get('/', [HomeController::class, 'index'])->name('home.client');
 route::get('/category/{slug}/{id}', [HomeController::class, 'listCategory'])->name('category.product');
+route::get('/detail/{id}', [HomeController::class, 'detailProduct'])->name('detail.product');
 
 #ADD TO CARD
 route::get('/products/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('addToCart');
@@ -36,8 +38,8 @@ route::get('/products/update-cart', [HomeController::class, 'updateCart'])->name
 route::get('products/delete-cart', [HomeController::class, 'deleteCart'])->name('deleteCart');
 
 #CHECKOUT
-route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
-route::post('/place-order',[CheckoutController::class,'placeOrder'])->name('placeOrder');
+route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('placeOrder');
 
 #ĐĂNG NHẬP
 route::get('/login', [AdminController::class, 'login'])->name('login');
@@ -137,22 +139,10 @@ route::prefix('admin')->middleware('auth')->group(function () {
         route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('delete.user.admin');
     });
 
-    route::prefix('roles')->group(function () {
+    #ORDER
+    route::prefix('order')->group(function () {
 
-        route::get('/', [AdminRoleController::class, 'index'])->name('index.role.admin');
-
-        route::get('/add', [AdminRoleController::class, 'create'])->name('add.role.admin');
-        route::post('/add', [AdminRoleController::class, 'store'])->name('store.role.admin');
-
-        route::get('/edit/{id}', [AdminRoleController::class, 'edit'])->name('edit.role.admin');
-        route::post('/edit/{id}', [AdminRoleController::class, 'update'])->name('update.role.admin');
-
-        route::get('/delete/{id}', [AdminRoleController::class, 'delete'])->name('delete.role.admin');
-    });
-
-    route::prefix('permissions')->group(function () {
-
-        route::get('/add', [PermissionController::class, 'create'])->name('add.permission.admin');
-        route::post('/add', [PermissionController::class, 'store'])->name('store.permission.admin');
+        route::get('/', [OrderController::class, 'index'])->name('index.order.admin');
+        route::get('/detail/{id}', [OrderController::class, 'detail'])->name('detail.order.admin');
     });
 });

@@ -115,6 +115,10 @@ a#scrollUp i{
   -o-transition: all 0.9s ease 0s;
 }
 
+.cart_description{
+    width: 20% !important;
+}
+
 
 .fa-facebook:hover {
   background: #0083C9;
@@ -142,6 +146,13 @@ a#scrollUp i{
   margin-right: 0;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+.image-arr{
+    display: flex !important;
+    margin-top: 5px !important;
+    margin-left: -13px !important;
+
 }
 
 .header-middle .container .row .col-sm-4{
@@ -467,6 +478,9 @@ ul.sub-menu {
 
 .footer-widget {
   margin-bottom: 68px;
+}
+.container-footer{
+    background-color: #dadada;
 }
 
 .footer-widget .container {
@@ -1214,12 +1228,23 @@ h2.title {
 	background:#ccccc6;
 }
 
+.title-pro{
+    margin-left:60px !important;
+    margin-top: auto !important;
+}
+
+.image-product-detail{
+    width: 110px !important;
+    height: 110px !important;
+    padding: auto !important;
+    padding-right: 5px;
+}
+
 .product-information {
   border: 1px solid #F7F7F0;
   overflow: hidden;
   padding-bottom: 60px;
   padding-left: 60px;
-  padding-top: 60px;
   position: relative;
 }
 
@@ -1616,7 +1641,11 @@ h2.title {
 
 #cart_items .cart_info .cart_price p {
   color:#696763;
-  font-size: 18px
+  font-size: 18px;
+
+}
+.cart_price{
+    text-align: center !important;
 }
 
 
@@ -1624,31 +1653,40 @@ h2.title {
   color: #40403E;
   font-size: 24px;
 }
+.cart_total_price{
+    text-align: center !important;
+}
 
 .cart_product {
   display: block;
   margin: 15px -70px 10px 25px;
 }
 
+.cart_update{
+    width: 100% !important;
+}
+
 .cart_quantity_button a {
   background:#F0F0E9;
   color: #696763;
-  display: inline-block;
+
   font-size: 16px;
   height: 28px;
   overflow: hidden;
   text-align: center;
-  width: 35px;
-  float: left;
+  width: 70%;
+}
+.cart_quantity{
+    text-align: center !important;
 }
 
 
 .cart_quantity_input {
   color: #696763;
-  float: left;
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
+  width: 50% !important;
 
 }
 
@@ -2520,3 +2558,7 @@ h2.title {
 }
 
 
+.quantity
+{
+    width: 15% !important;
+}
