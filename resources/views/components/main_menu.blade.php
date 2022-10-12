@@ -10,9 +10,6 @@
             </li>
         @endforeach
 
-
-
-        <li><a href="#">404</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </div>
