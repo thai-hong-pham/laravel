@@ -141,8 +141,8 @@ route::prefix('admin')->middleware('auth')->group(function () {
 
     #ORDER
     route::prefix('order')->group(function () {
-
         route::get('/', [OrderController::class, 'index'])->name('index.order.admin');
         route::get('/detail/{id}', [OrderController::class, 'detail'])->name('detail.order.admin');
+
     });
 });

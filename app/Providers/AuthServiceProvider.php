@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
-use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -27,12 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('category-list', function (User $user) {
-            return $user->checkPermissionAccess(config('permissions.access.list-category'));
-        });
-
-        Gate::define('menu-list', function (User $user) {
-            return $user->checkPermissionAccess(config('permissions.access.list-menu'));
-        });
+        //
     }
 }

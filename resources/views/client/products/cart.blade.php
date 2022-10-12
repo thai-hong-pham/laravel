@@ -27,7 +27,7 @@
                 success: function(data) {
                     if (data.code === 200) {
                         $('.cart_wrapper').html(data.cart_component);
-                        alert('Cập nhật giỏ hàng thành công!!!');
+
                     }
                 },
                 error: function() {
